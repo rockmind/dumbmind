@@ -1,6 +1,7 @@
 package pl.home.learning.first;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -51,4 +52,27 @@ public class Matrix<T extends Number>  {
 		}
 		return mTmp;
 	}
+	@Override
+	public String toString() {
+		StringBuffer macierz = new StringBuffer("");
+		macierz.append(matrix.get(0).toString());
+		for (int j = 1; j < this.j; j++) {
+			macierz.append(matrix.get(j%6 + i*6).toString());
+		}
+		for (int i = 1; i < this.i; i++) {
+			macierz.append("\n");
+			macierz.append(matrix.get(i*6).toString());
+			for (int j = 1; j < this.j; j++) {
+				macierz.append("\t");
+				macierz.append(matrix.get(j%6 + i*6).toString());
+			}
+			
+		}
+		return macierz.toString();
+	}
+	public static void main(String[] args) {
+		Matrix<Double> m1 = new Matrix<>(2, 2, Arrays.asList(1.,1.,1.,1.,1.,1.,1.,1.,1.));
+		Matrix<Double> m2 = new Matrix<>(2, 2, Arrays.asList(1.,1.,1.,1.,1.,1.,1.,1.,1.));
+		System.out.println(m1.toString());
+			}
 }
